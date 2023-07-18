@@ -1,0 +1,78 @@
+/* mulish-regular - cyrillic_latin */
+@font-face {
+  font-display: swap;
+  font-family: "Mulish";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/mulish-v12-cyrillic_latin-regular.woff2") format("woff2");
+}
+/* mulish-600 - cyrillic_latin */
+@font-face {
+  font-display: swap;
+  font-family: "Mulish";
+  font-style: normal;
+  font-weight: 600;
+  src: url("../fonts/mulish-v12-cyrillic_latin-600.woff2") format("woff2");
+}
+/* mulish-900 - cyrillic_latin */
+@font-face {
+  font-display: swap;
+  font-family: "Mulish";
+  font-style: normal;
+  font-weight: 900;
+  src: url("../fonts/mulish-v12-cyrillic_latin-900.woff2") format("woff2");
+}
+/* ./fonts */
+
+/* Reset */
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: Mulish, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.1;
+  background: #f8e8e2 url(../images/svg/bg.svg) no-repeat top/contain;
+  color: #000;
+}
+
+button {
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+fieldset {
+  margin: 0;
+  padding: 0;
+}
+/* ./reset */
