@@ -4,7 +4,7 @@ const modalController = ({ modal, btnOpen, btnClose, time = 300 }) => {
 
   modalElem.style.cssText = `
     display: flex;
-    visibility:hidden;
+    visibility: hidden;
     opacity: 0;
     transition: opacity ${time}ms ease-in-out;
   `;
@@ -21,6 +21,8 @@ const modalController = ({ modal, btnOpen, btnClose, time = 300 }) => {
 
       setTimeout(() => {
         modalElem.style.visibility = "hidden";
+
+        scrollController.enabledScroll();
       }, time);
 
       window.removeEventListener("keydown", closeModal);
@@ -32,6 +34,8 @@ const modalController = ({ modal, btnOpen, btnClose, time = 300 }) => {
     modalElem.style.opacity = 1;
 
     window.addEventListener("keydown", closeModal);
+
+    scrollController.disabledScroll();
   };
 
   buttonElems.forEach((btn) => {

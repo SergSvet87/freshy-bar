@@ -64,10 +64,10 @@
       src="scripts/main.js"
       defer
     ></script>
-    <script
+    <!-- <script
       src="scripts/modal.js"
       defer
-    ></script>
+    ></script> -->
   </head>
   <body>
     <!--Header start-->
@@ -79,7 +79,10 @@
           alt="Логотип Freshy Bar"
         />
         <div class="header__btns">
-          <button class="header__btn-order">
+          <button
+            class="header__btn-order"
+            type="button"
+          >
             <svg
               width="24"
               height="24"
@@ -163,140 +166,7 @@
                     <p class="cocktail__size">300мл</p>
                   </div>
 
-                  <button class="btn cocktail__btn">Додати</button>
-                </div>
-              </article>
-            </li>
-
-            <li class="goods__item">
-              <article class="goods__card cocktail">
-                <img
-                  src="images/jpg/strawberry.jpg"
-                  alt="Коктейль Полуниця"
-                  class="cocktail__img"
-                />
-                <div class="cocktail__content">
-                  <div class="cocktail__text">
-                    <h3 class="cocktail__title">Полуниця</h3>
-                    <p class="cocktail__price text-red">270 ₴</p>
-                    <p class="cocktail__size">300мл</p>
-                  </div>
-
-                  <button class="btn cocktail__btn">Додати</button>
-                </div>
-              </article>
-            </li>
-
-            <li class="goods__item">
-              <article class="goods__card cocktail">
-                <img
-                  src="images/jpg/berries.jpg"
-                  alt="Коктейль Лісові ягоди"
-                  class="cocktail__img"
-                />
-                <div class="cocktail__content">
-                  <div class="cocktail__text">
-                    <h3 class="cocktail__title">Лісові ягоди</h3>
-                    <p class="cocktail__price text-red">280 ₴</p>
-                    <p class="cocktail__size">300мл</p>
-                  </div>
-
-                  <button class="btn cocktail__btn">Додати</button>
-                </div>
-              </article>
-            </li>
-
-            <li class="goods__item">
-              <article class="goods__card cocktail">
-                <img
-                  src="images/jpg/mint.jpg"
-                  alt="Коктейль Лайм та М'ята"
-                  class="cocktail__img"
-                />
-                <div class="cocktail__content">
-                  <div class="cocktail__text">
-                    <h3 class="cocktail__title">Лайм та М'ята</h3>
-                    <p class="cocktail__price text-red">260 ₴</p>
-                    <p class="cocktail__size">300мл</p>
-                  </div>
-
-                  <button class="btn cocktail__btn">Додати</button>
-                </div>
-              </article>
-            </li>
-
-            <li class="goods__item">
-              <article class="goods__card cocktail">
-                <img
-                  src="images/jpg/banana.jpg"
-                  alt="Коктейль Банан"
-                  class="cocktail__img"
-                />
-                <div class="cocktail__content">
-                  <div class="cocktail__text">
-                    <h3 class="cocktail__title">Банан</h3>
-                    <p class="cocktail__price text-red">250 ₴</p>
-                    <p class="cocktail__size">300мл</p>
-                  </div>
-
-                  <button class="btn cocktail__btn">Додати</button>
-                </div>
-              </article>
-            </li>
-
-            <li class="goods__item">
-              <article class="goods__card cocktail">
-                <img
-                  src="images/jpg/kiwi.jpg"
-                  alt="Коктейль Ківі та Яблуко"
-                  class="cocktail__img"
-                />
-                <div class="cocktail__content">
-                  <div class="cocktail__text">
-                    <h3 class="cocktail__title">Ківі та Яблуко</h3>
-                    <p class="cocktail__price text-red">260 ₴</p>
-                    <p class="cocktail__size">300мл</p>
-                  </div>
-
-                  <button class="btn cocktail__btn">Додати</button>
-                </div>
-              </article>
-            </li>
-
-            <li class="goods__item">
-              <article class="goods__card cocktail">
-                <img
-                  src="images/jpg/mango.jpg"
-                  alt="Коктейль Манго"
-                  class="cocktail__img"
-                />
-                <div class="cocktail__content">
-                  <div class="cocktail__text">
-                    <h3 class="cocktail__title">Манго</h3>
-                    <p class="cocktail__price text-red">270 ₴</p>
-                    <p class="cocktail__size">300мл</p>
-                  </div>
-
-                  <button class="btn cocktail__btn">Додати</button>
-                </div>
-              </article>
-            </li>
-
-            <li class="goods__item">
-              <article class="goods__card cocktail">
-                <img
-                  src="images/jpg/passion-fruit.jpg"
-                  alt="Коктейль Маракуйя"
-                  class="cocktail__img"
-                />
-                <div class="cocktail__content">
-                  <div class="cocktail__text">
-                    <h3 class="cocktail__title">Маракуйя</h3>
-                    <p class="cocktail__price text-red">280 ₴</p>
-                    <p class="cocktail__size">300мл</p>
-                  </div>
-
-                  <button class="btn cocktail__btn">Додати</button>
+                  <button class="btn cocktail__btn cocktail__btn_make">Додати</button>
                 </div>
               </article>
             </li>
@@ -341,12 +211,58 @@
     <!-- ./Footer -->
 
     <!-- Modal -->
-    <div class="modal">
+    <div class="modal modal_order">
       <div class="modal__main">
-        <h2 class="modal__title">Кошик <span class="text-red"><sup>(1)</sup></span></h2>
-        <ul class="modal__list">
-          <li class="modal__item"></li>
-        </ul>
+        <div class="order">
+          <h2 class="order__title">
+            Кошик<sup class="order__count text-red">(2)</sup>
+          </h2>
+          
+          <ul class="order__list">
+            <li class="order__item">
+              <img class="order__img" src="images/jpg/make-your-own.jpg" alt="Назва коктейлю">
+
+              <div class="order__info">
+                <h3 class="order__name">Конструктор: Банан, яблоко, киви</h3>
+                <ul class="order__topping-list">
+                  <li class="order__topping-item">300мл</li>
+                  <li class="order__topping-item">Біорозкладний стакан</li>
+                  <li class="order__topping-item">Лід</li>
+                  <li class="order__topping-item">М'ята</li>
+                </ul>
+              </div>
+
+              <button class="order__item-del" aria-label="Видалити коктейль з кошика"></button>
+
+              <p class="order__item-price">380&nbsp;₴</p>
+            </li>
+          </ul>
+
+          <div class="order__total">
+            <p class="order__total-title">Всього:</p>
+            <p class="order__total-price">380 ₴</p>
+          </div>
+
+          <form class="order__form">
+            <label for="" class="order__label">
+              <input type="text" class="order__input" placeholder="Ваше Ім'я">
+            </label>
+            
+            <label for="" class="order__label">
+              <input type="text" class="order__input" placeholder="Ваш телефон">
+            </label>
+
+            <button class="order__btn btn" type="submit">Замовити</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal modal_make">
+      <div class="modal__main">
+        <div class="make">
+          test
+        </div>
       </div>
     </div>
   </body>
