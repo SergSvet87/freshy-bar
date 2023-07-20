@@ -1,4 +1,4 @@
-const API_URI = "https://pretty-solid-screw.glitch.me/";
+const API_URI = "https://summer-long-echinodon.glitch.me/";
 
 const getData = async () => {
   const response = await fetch(`${API_URI}api/goods`);
