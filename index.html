@@ -12,11 +12,11 @@
     />
     <meta
       name="keywords"
-      content="html, css, javascript, svitlychnyi, serhii"
+      content="fresh, smoothies banana, passion fruit, berries, kiwi, strawberry, mango, mint, apple, cherry, pineapple, basil"
     />
     <meta
       name="description"
-      content="Это сайт- ."
+      content="Це сайт по замовленню найкращих освіжаючих смузі, але без доставки додому."
     />
     <meta
       name="author"
@@ -46,6 +46,7 @@
       type="font/woff2"
       crossorigin
     />
+
     <link
       rel="icon"
       href="images/svg/favicon.svg"
@@ -64,10 +65,6 @@
       src="scripts/main.js"
       defer
     ></script>
-    <!-- <script
-      src="scripts/modal.js"
-      defer
-    ></script> -->
   </head>
   <body>
     <!--Header start-->
@@ -106,7 +103,7 @@
         </div>
       </div>
     </header>
-    <!-- ./Header -->
+    <!-- ./header -->
 
     <!-- Main start -->
     <main class="main">
@@ -141,9 +138,8 @@
           </div>
         </div>
       </section>
-      <!--  ./ -->
+      <!--  ./hero -->
 
-      <!--  start -->
       <section
         class="goods"
         id="goods"
@@ -166,16 +162,18 @@
                     <p class="cocktail__size">300мл</p>
                   </div>
 
-                  <button class="btn cocktail__btn cocktail__btn_make">Додати</button>
+                  <button class="btn cocktail__btn cocktail__btn_make">
+                    Додати
+                  </button>
                 </div>
               </article>
             </li>
           </ul>
         </div>
       </section>
-      <!-- ./ -->
+      <!-- ./goods -->
     </main>
-    <!-- ./Main -->
+    <!-- ./main -->
 
     <!-- Footer start -->
     <footer class="footer">
@@ -208,19 +206,23 @@
         </ul>
       </div>
     </footer>
-    <!-- ./Footer -->
+    <!-- ./footer -->
 
     <!-- Modal -->
     <div class="modal modal_order">
-      <div class="modal__main">
+      <div class="modal__main modal__main_order">
         <div class="order">
-          <h2 class="order__title">
+          <h3 class="order__title">
             Кошик<sup class="order__count text-red">(2)</sup>
-          </h2>
-          
+          </h3>
+
           <ul class="order__list">
             <li class="order__item">
-              <img class="order__img" src="images/jpg/make-your-own.jpg" alt="Назва коктейлю">
+              <img
+                class="order__img"
+                src="images/jpg/make-your-own.jpg"
+                alt="Назва коктейлю"
+              />
 
               <div class="order__info">
                 <h3 class="order__name">Конструктор: Банан, яблуко, ківі</h3>
@@ -232,7 +234,10 @@
                 </ul>
               </div>
 
-              <button class="order__item-del" aria-label="Видалити коктейль з кошика"></button>
+              <button
+                class="order__item-del"
+                aria-label="Видалити коктейль з кошика"
+              ></button>
 
               <p class="order__item-price">45&nbsp;₴</p>
             </li>
@@ -240,30 +245,256 @@
 
           <div class="order__total">
             <p class="order__total-title">Всього:</p>
-            <p class="order__total-price">45 ₴</p>
+            <p class="order__total-price text-red">45 ₴</p>
           </div>
 
           <form class="order__form">
-            <label for="" class="order__label">
-              <input type="text" class="order__input" placeholder="Ваше Ім'я">
-            </label>
-            
-            <label for="" class="order__label">
-              <input type="text" class="order__input" placeholder="Ваш телефон">
+            <label
+              for=""
+              class="order__label"
+            >
+              <input
+                type="text"
+                class="order__input"
+                placeholder="Ваше Ім'я"
+              />
             </label>
 
-            <button class="order__btn btn" type="submit">Замовити</button>
+            <label
+              for=""
+              class="order__label"
+            >
+              <input
+                type="text"
+                class="order__input"
+                placeholder="Ваш телефон"
+              />
+            </label>
+
+            <button
+              class="order__btn btn"
+              type="submit"
+            >
+              Замовити
+            </button>
           </form>
         </div>
       </div>
     </div>
+    <!-- ./order -->
 
     <div class="modal modal_make">
-      <div class="modal__main">
+      <div class="modal__main modal__main_make">
         <div class="make">
-          test
+          <h3 class="make__title">
+            Збери <span class="text-red">свій </span>смузі
+          </h3>
+
+          <form class="make__form">
+            <fieldset class="make__fieldset make__fieldset_ingredients">
+              <label class="make__label checkbox">
+                <input
+                  type="checkbox"
+                  class="checkbox__input"
+                  name="ingredients"
+                  value="Полуниця"
+                />
+                Полуниця
+              </label>
+
+              <label class="make__label checkbox">
+                <input
+                  type="checkbox"
+                  class="checkbox__input"
+                  name="ingredients"
+                  value="Банан"
+                />
+                Банан
+              </label>
+
+              <label class="make__label checkbox">
+                <input
+                  type="checkbox"
+                  class="checkbox__input"
+                  name="ingredients"
+                  value="Манго"
+                />
+                Манго
+              </label>
+
+              <label class="make__label checkbox">
+                <input
+                  type="checkbox"
+                  class="checkbox__input"
+                  name="ingredients"
+                  value="Ківі"
+                />
+                Ківі
+              </label>
+
+              <label class="make__label checkbox">
+                <input
+                  type="checkbox"
+                  class="checkbox__input"
+                  name="ingredients"
+                  value="Маракуйя"
+                />
+                Маракуйя
+              </label>
+
+              <label class="make__label checkbox">
+                <input
+                  type="checkbox"
+                  class="checkbox__input"
+                  name="ingredients"
+                  value="Яблуко"
+                />
+                Яблуко
+              </label>
+            </fieldset>
+
+            <div class="make__wrap-middle">
+              <fieldset class="make__fieldset make__fieldset_additionally">
+                <legend class="make__legend">Додатково:</legend>
+                <label class="make__label checkbox">
+                  <input
+                    type="checkbox"
+                    class="checkbox__input"
+                    name="additionally"
+                    value="М'ята"
+                  />
+                  М'ята <span class="make__upsale">(+5 ₴)</span>
+                </label>
+
+                <label class="make__label checkbox">
+                  <input
+                    type="checkbox"
+                    class="checkbox__input"
+                    name="additionally"
+                    value="Лід"
+                  />
+                  Лід <span class="make__upsale">(+3 ₴)</span>
+                </label>
+              </fieldset>
+
+              <fieldset class="make__fieldset make__fieldset_cup">
+                <legend class="make__legend">Стакан:</legend>
+                <label class="make__label radio">
+                  <input
+                    type="radio"
+                    class="radio__input"
+                    name="cup"
+                    value="Біорозкладний"
+                  />
+                  Біорозкладний <span class="make__upsale">(+5 ₴)</span>
+                </label>
+
+                <label class="make__label radio">
+                  <input
+                    type="radio"
+                    class="radio__input"
+                    name="cup"
+                    value="Пластиковий"
+                  />
+                  Пластиковий <span class="make__upsale">(0 ₴)</span>
+                </label>
+              </fieldset>
+            </div>
+
+            <div class="make__footer">
+              <button
+                class="make__btn btn"
+                type="submit"
+              >
+                Додати
+              </button>
+
+              <div class="make__total">
+                <p class="make__price text-red">45 ₴</p>
+                <p class="make__size">300мл</p>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>
+    <!-- ./make -->
+
+    <div class="modal modal_add">
+      <div class="modal__main modal__main_add">
+        <div class="add">
+          <h3 class="add__title">
+            Банановий смузі
+          </h3>
+
+          <form class="make__form">
+            
+            <div class="make__wrap-middle">
+              <fieldset class="make__fieldset make__fieldset_additionally">
+                <legend class="make__legend">Додатково:</legend>
+                <label class="make__label checkbox">
+                  <input
+                    type="checkbox"
+                    class="checkbox__input"
+                    name="additionally"
+                    value="М'ята"
+                  />
+                  М'ята <span class="make__upsale">(+5 ₴)</span>
+                </label>
+
+                <label class="make__label checkbox">
+                  <input
+                    type="checkbox"
+                    class="checkbox__input"
+                    name="additionally"
+                    value="Лід"
+                  />
+                  Лід <span class="make__upsale">(+3 ₴)</span>
+                </label>
+              </fieldset>
+
+              <fieldset class="make__fieldset make__fieldset_cup">
+                <legend class="make__legend">Стакан:</legend>
+                <label class="make__label radio">
+                  <input
+                    type="radio"
+                    class="radio__input"
+                    name="cup"
+                    value="Біорозкладний"
+                  />
+                  Біорозкладний <span class="make__upsale">(+5 ₴)</span>
+                </label>
+
+                <label class="make__label radio">
+                  <input
+                    type="radio"
+                    class="radio__input"
+                    name="cup"
+                    value="Пластиковий"
+                  />
+                  Пластиковий <span class="make__upsale">(0 ₴)</span>
+                </label>
+              </fieldset>
+            </div>
+
+            <div class="make__footer">
+              <button
+                class="make__btn btn"
+                type="submit"
+              >
+                Додати
+              </button>
+
+              <div class="make__total">
+                <p class="make__price text-red">32 ₴</p>
+                <p class="make__size">320мл</p>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- ./add -->
+
   </body>
 </html>

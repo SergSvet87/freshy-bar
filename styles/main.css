@@ -30,6 +30,8 @@
   --white: #fff;
   --black: #000;
   --bg: #f8e8e2;
+  --hover: #f6f6f6;
+  --legend: #d5b4a8;
   --gray: #c1c1c1;
   --accent: #f44;
   --shadow: #fa5a5a;
@@ -307,18 +309,20 @@ img {
   background-color: rgba(0, 0, 0, 0.5);
   cursor: pointer;
   overflow-y: auto;
-  padding: 30px;
+  padding: 15px;
 }
 
 .modal__main {
   position: relative;
-  width: 100%;
-  max-width: 780px;
   margin: auto;
   cursor: default;
 }
-
 /* ./modal */
+
+.modal__main_order {
+  max-width: 780px;
+  width: 100%;
+}
 
 .order {
   padding: 60px 40px;
@@ -385,11 +389,13 @@ img {
   background-image: url(../images/svg/delete.svg);
   justify-self: end;
 }
+
 .order__item-price {
   grid-area: price;
   justify-self: end;
   align-self: end;
 }
+
 .order__total {
   display: flex;
   justify-content: space-between;
@@ -409,6 +415,7 @@ img {
   grid-template-columns: repeat(2, 1fr);
   gap: 32px 20px;
 }
+
 .order__label {
   width: 100%;
 }
@@ -427,6 +434,210 @@ img {
   grid-column: 2/3;
 }
 /* ./order */
+
+.modal__main_make {
+  max-width: 640px;
+  width: 100%;
+}
+
+.make {
+  padding: 60px 40px;
+  border-radius: 24px;
+  background-color: var(--bg);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.make__title {
+  font-size: 44px;
+  font-weight: 900;
+  margin-bottom: 40px;
+}
+
+.make__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.make__fieldset {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.make__fieldset_ingredients {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px 55px;
+  margin-bottom: 32px;
+}
+
+.make__wrap-middle {
+  display: flex;
+  gap: 55px;
+  margin-bottom: 40px;
+}
+
+.make__fieldset_additionally {
+  width: 150px;
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 20px;
+}
+
+.make__legend {
+  color: var(--legend);
+  margin-bottom: 24px;
+}
+
+.make__fieldset_cup {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 20px;
+}
+
+.make__upsale {
+  color: var(--legend);
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.make__footer {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.make__btn {
+  min-width: 232px;
+}
+
+.make__price {
+  font-weight: 600;
+  margin-bottom: 3px;
+}
+
+.make__size {
+  font-size: 12px;
+  color: var(--legend);
+  text-align: right;
+}
+
+.checkbox {
+  position: relative;
+  display: block;
+  padding-left: 32px;
+  line-height: 24px;
+  cursor: pointer;
+}
+
+.checkbox__input {
+  position: absolute;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  margin-left: -32px;
+  cursor: pointer;
+}
+
+.checkbox__input::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  display: block;
+  border-radius: 2px;
+  background-color: var(--white);
+}
+
+.checkbox__input::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 15px;
+  background-image: url(../images/svg/check.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.checkbox__input:hover::before,
+.radio__input:hover::before {
+  background-color: var(--hover);
+}
+
+.checkbox__input:focus:before,
+.radio__input:focus:before {
+  border: 1px solid var(--legend);
+}
+
+.checkbox__input:checked::after,
+.radio__input:checked::after {
+  opacity: 1;
+}
+
+.checkbox__input:focus-visible,
+.radio__input:focus-visible {
+  outline: none;
+}
+
+.radio {
+  position: relative;
+  display: block;
+  padding-left: 32px;
+  line-height: 24px;
+}
+
+.radio__input {
+  position: absolute;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  margin-left: -32px;
+}
+
+.radio__input::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  display: block;
+  border-radius: 50%;
+  background-color: var(--white);
+}
+
+.radio__input::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  background-color: var(--black);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+/* ./make */
+
+.add {
+  padding: 60px 40px;
+  border-radius: 24px;
+  background-color: var(--bg);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.add__title {
+  font-size: 44px;
+  font-weight: 900;
+  margin-bottom: 40px;
+}
 
 /* Media */
 @media (max-width: 1240px) {
@@ -563,7 +774,9 @@ img {
   .modal__main {
     max-width: 320px;
   }
-  .order {
+  .order,
+  .make,
+  .add {
     padding: 24px 15px;
   }
 }

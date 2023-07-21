@@ -25,21 +25,21 @@ const createCard = (item) => {
         <p class="cocktail__size">${item.size}</p>
       </div>
 
-      <button class="btn cocktail__btn" data-id="${item.id}">Додати</button>
+      <button class="btn cocktail__btn cocktail__btn_add" type="button" data-id="${item.id}">Додати</button>
     </div>
   `;
 
   return cocktail;
 };
 
-const scrollController = {
+const scrollOptions = {
   scrollPosition: 0,
   disabledScroll() {
-    scrollController.scrollPosition = window.scrollY;
+    this.scrollPosition = window.scrollY;
     document.body.style.cssText = `
       overflow: hidden;
       position: fixed;
-      top: -${scrollController.scrollPosition}px;
+      top: -${this.scrollPosition}px;
       left: 0;
       height: 100vh;
       width: 100vw;
@@ -49,7 +49,7 @@ const scrollController = {
   },
   enabledScroll() {
     document.body.style.cssText = `position: relative;`;
-    window.scroll({ top: scrollController.scrollPosition });
+    window.scroll({ top: this.scrollPosition });
     document.documentElement.style.scrollBehavior = "";
   },
 };
@@ -79,7 +79,7 @@ const modalController = ({ modal, btnOpen, btnClose, time = 300 }) => {
       setTimeout(() => {
         modalElem.style.visibility = "hidden";
 
-        scrollController.enabledScroll();
+        scrollOptions.enabledScroll();
       }, time);
 
       window.removeEventListener("keydown", closeModal);
@@ -92,7 +92,7 @@ const modalController = ({ modal, btnOpen, btnClose, time = 300 }) => {
 
     window.addEventListener("keydown", closeModal);
 
-    scrollController.disabledScroll();
+    scrollOptions.disabledScroll();
   };
 
   buttonElems.forEach((btn) => {
@@ -112,6 +112,18 @@ const init = async () => {
   modalController({
     modal: ".modal_order",
     btnOpen: ".header__btn-order",
+    btnClose: "",
+  });
+
+  modalController({
+    modal: ".modal_make",
+    btnOpen: ".cocktail__btn_make",
+    btnClose: "",
+  });
+
+  modalController({
+    modal: ".modal_add",
+    btnOpen: ".cocktail__btn_add",
     btnClose: "",
   });
 
