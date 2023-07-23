@@ -451,6 +451,8 @@ img {
 
 .order__list {
   margin-bottom: 40px;
+  font-size: 24px;
+  text-align: center;
 }
 
 .order__item {
@@ -462,6 +464,7 @@ img {
   grid-template-areas:
     "image info delete"
     "image info price";
+  text-align: left;
 }
 
 .order__item:last-child {
@@ -505,6 +508,7 @@ img {
   grid-area: price;
   justify-self: end;
   align-self: end;
+  font-size: 18px;
 }
 
 .order__total {
@@ -519,6 +523,7 @@ img {
 
 .order__total-price {
   font-weight: 600;
+  font-size: 22px;
 }
 
 .order__form {

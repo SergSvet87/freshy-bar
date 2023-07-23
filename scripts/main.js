@@ -277,9 +277,10 @@ const calculateMakeYourOwn = () => {
 
 const calculateAdd = () => {
   const modalAdd = document.querySelector(".modal_add");
-  const modalAddForm = modalAdd.querySelector(".make__form_add");
+  const modalAddForm = modalAdd.querySelector(".add__form_add");
   const modalAddTitle = modalAdd.querySelector(".add__title");
-  const modalAddInputTitle = modalAdd.querySelector(".make__input-title");
+  const modalAddInputTitle = modalAdd.querySelector(".add__input-title");
+  const modalAddInputImage = modalAdd.querySelector(".make__input-image");
   const modalAddInputStartPrice = modalAdd.querySelector(
     ".make__input_start-price"
   );
@@ -303,6 +304,7 @@ const calculateAdd = () => {
     modalAdd.closeModal("close");
   });
 
+  
   const fillInForm = (data) => {
     modalAddTitle.textContent = data.title;
     modalAddInputTitle.value = data.title;
@@ -311,6 +313,7 @@ const calculateAdd = () => {
     modalAddPrice.innerHTML = `${data.price}&nbsp;₴`;
     modalAddInputSize.value = data.size;
     modalAddSize.textContent = data.size;
+    modalAddInputImage.value = `${API_URI}${data.image}`;
   };
 
   const resetForm = () => {
@@ -333,7 +336,7 @@ const createCartItem = (item) => {
   li.innerHTML = `
     <img
       class="order__img"
-      src="images/jpg/make-your-own.jpg"
+      src=${item.image}
       alt=${item.title}
     />
 
@@ -375,8 +378,15 @@ const renderCart = () => {
   const modalOrderBtn = modalOrder.querySelector(".order__btn");
 
   const orderListData = cartDataControl.get();
-  modalOrderList.textContent = "";
   modalOrderCount.textContent = `(${orderListData.length})`;
+
+  if (orderListData.length) {
+    modalOrderList.textContent = "";
+    modalOrderBtn.disabled = false;
+  } else {
+    modalOrderBtn.disabled = true;
+    modalOrderList.textContent = "На жаль, у кошику відсутні смузі! :(";
+  }
 
   orderListData.forEach((item) => {
     modalOrderList.append(createCartItem(item));
@@ -387,24 +397,30 @@ const renderCart = () => {
     0
   )} ₴`;
 
-  if (orderListData.length) {
-    modalOrderBtn.disabled = false;
-    return;
-  } else {
-    modalOrderBtn.disabled = true;
-  }
+  const modalOrderButtonsDel =
+    modalOrderList.querySelectorAll(".order__item-del");
+  modalOrderButtonsDel.forEach((btnDel) => {
+    btnDel.addEventListener("click", (e) => {
+      const idls = e.target.dataset.idls;
+
+      cartDataControl.remove(idls);
+      modalOrderForm.reset();
+
+      const dataList = cartDataControl.get();
+      modalOrderList.textContent = "";
+      dataList.forEach((item) => {
+        modalOrderList.append(createCartItem(item));
+      });
+      modalOrderCount.textContent = `(${dataList.length})`;
+      modalOrderTotalPrice.textContent = `${dataList.reduce(
+        (acc, item) => acc + +item.price,
+        0
+      )} ₴`;
+    });
+  });
 
   modalOrderForm.addEventListener("submit", async (e) => {
     e.preventDefault();
-
-    if (!orderListData.length) {
-      alert("В кошику товар відсутній! :(");
-
-      modalOrderBtn.disabled = false;
-      modalOrderForm.reset();
-      modalOrder.closeModal("close");
-      return;
-    }
 
     const data = getFormData(modalOrderForm);
     const response = await fetch(`${API_URI}api/order`, {
@@ -423,6 +439,8 @@ const renderCart = () => {
     alert(message);
 
     cartDataControl.clear();
+    modalOrderForm.reset();
+    modalOrder.closeModal("close");
   });
 };
 
