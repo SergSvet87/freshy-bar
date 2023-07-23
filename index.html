@@ -69,6 +69,9 @@
   <body>
     <!--Header start-->
     <header class="header">
+      <h1 class="visually-hidden">
+        Freshy Bar - Свіжі, смачні та прохолодні смузі
+      </h1>
       <div class="container header__container">
         <img
           class="header__logo"
@@ -107,7 +110,7 @@
 
     <!-- Main start -->
     <main class="main">
-      <section class="hero">
+      <section class="hero hero__container">
         <div class="container">
           <h2 class="hero__title">
             Вибери свій <span class="text-red">освіжаючий </span> фреш
@@ -136,7 +139,19 @@
               />
             </div>
           </div>
+          <!-- ./cups -->
+
+          <div class="decor">
+            <div class="decor__img decor__img_01"></div>
+            <div class="decor__img decor__img_02"></div>
+            <div class="decor__img decor__img_03"></div>
+            <div class="decor__img decor__img_04"></div>
+            <div class="decor__img decor__img_05"></div>
+            <div class="decor__img decor__img_06"></div>
+          </div>
+          <!-- ./decor -->
         </div>
+        <!-- ./container -->
       </section>
       <!--  ./hero -->
 
@@ -191,6 +206,7 @@
             <a
               href="https://t.me/Mrsmallowww"
               class="footer__developer-link"
+              target="_blank"
               >Anastasia Ilina</a
             >
           </li>
@@ -200,6 +216,7 @@
             <a
               href="https://t.me/Serg_svet"
               class="footer__developer-link"
+              target="_blank"
               >Serhii Svitlychnyi</a
             >
           </li>
@@ -212,35 +229,12 @@
     <div class="modal modal_order">
       <div class="modal__main modal__main_order">
         <div class="order">
-          <h3 class="order__title">
+          <h3 class="order__title title-h3">
             Кошик<sup class="order__count text-red">(2)</sup>
           </h3>
 
           <ul class="order__list">
-            <li class="order__item">
-              <img
-                class="order__img"
-                src="images/jpg/make-your-own.jpg"
-                alt="Назва коктейлю"
-              />
-
-              <div class="order__info">
-                <h3 class="order__name">Конструктор: Банан, яблуко, ківі</h3>
-                <ul class="order__topping-list">
-                  <li class="order__topping-item">300мл</li>
-                  <li class="order__topping-item">Біорозкладний стакан</li>
-                  <li class="order__topping-item">Лід</li>
-                  <li class="order__topping-item">М'ята</li>
-                </ul>
-              </div>
-
-              <button
-                class="order__item-del"
-                aria-label="Видалити коктейль з кошика"
-              ></button>
-
-              <p class="order__item-price">45&nbsp;₴</p>
-            </li>
+            <!-- <li class="order__item"></li> -->
           </ul>
 
           <div class="order__total">
@@ -249,25 +243,23 @@
           </div>
 
           <form class="order__form">
-            <label
-              for=""
-              class="order__label"
-            >
+            <label class="order__label">
               <input
                 type="text"
                 class="order__input"
+                name="name"
                 placeholder="Ваше Ім'я"
+                required
               />
             </label>
 
-            <label
-              for=""
-              class="order__label"
-            >
+            <label class="order__label">
               <input
                 type="text"
                 class="order__input"
+                name="phone"
                 placeholder="Ваш телефон"
+                required
               />
             </label>
 
@@ -286,11 +278,17 @@
     <div class="modal modal_make">
       <div class="modal__main modal__main_make">
         <div class="make">
-          <h3 class="make__title">
+          <h3 class="make__title title-h3">
             Збери <span class="text-red">свій </span>смузі
           </h3>
 
-          <form class="make__form">
+          <form class="make__form make__form_own">
+            <input
+              class="make__input-title"
+              type="hidden"
+              name="title"
+            />
+
             <fieldset class="make__fieldset make__fieldset_ingredients">
               <label class="make__label checkbox">
                 <input
@@ -363,7 +361,7 @@
                     name="additionally"
                     value="М'ята"
                   />
-                  М'ята <span class="make__upsale">(+5 ₴)</span>
+                  М'ята <span class="make__upsale">(+3 ₴)</span>
                 </label>
 
                 <label class="make__label checkbox">
@@ -385,6 +383,7 @@
                     class="radio__input"
                     name="cup"
                     value="Біорозкладний"
+                    checked
                   />
                   Біорозкладний <span class="make__upsale">(+5 ₴)</span>
                 </label>
@@ -396,21 +395,33 @@
                     name="cup"
                     value="Пластиковий"
                   />
-                  Пластиковий <span class="make__upsale">(0 ₴)</span>
+                  Пластиковий <span class="make__upsale">(2 ₴)</span>
                 </label>
               </fieldset>
             </div>
 
             <div class="make__footer">
               <button
-                class="make__btn btn"
+                class="make__btn make__btn_add btn"
                 type="submit"
               >
                 Додати
               </button>
 
               <div class="make__total">
-                <p class="make__price text-red">45 ₴</p>
+                <input
+                  class="make__input make__input_price"
+                  type="hidden"
+                  name="price"
+                  value="15"
+                />
+                <p class="make__price text-red">15 ₴</p>
+                <input
+                  class="make__input make__input_size"
+                  type="hidden"
+                  name="size"
+                  value="300"
+                />
                 <p class="make__size">300мл</p>
               </div>
             </div>
@@ -423,12 +434,15 @@
     <div class="modal modal_add">
       <div class="modal__main modal__main_add">
         <div class="add">
-          <h3 class="add__title">
-            Банановий смузі
-          </h3>
+          <h3 class="add__title title-h3">Банановий смузі</h3>
 
-          <form class="make__form">
-            
+          <form class="make__form make__form_add">
+            <input
+              class="make__input-title"
+              type="hidden"
+              name="title"
+            />
+
             <div class="make__wrap-middle">
               <fieldset class="make__fieldset make__fieldset_additionally">
                 <legend class="make__legend">Додатково:</legend>
@@ -439,7 +453,7 @@
                     name="additionally"
                     value="М'ята"
                   />
-                  М'ята <span class="make__upsale">(+5 ₴)</span>
+                  М'ята <span class="make__upsale">(+3 ₴)</span>
                 </label>
 
                 <label class="make__label checkbox">
@@ -461,6 +475,7 @@
                     class="radio__input"
                     name="cup"
                     value="Біорозкладний"
+                    checked
                   />
                   Біорозкладний <span class="make__upsale">(+5 ₴)</span>
                 </label>
@@ -472,7 +487,7 @@
                     name="cup"
                     value="Пластиковий"
                   />
-                  Пластиковий <span class="make__upsale">(0 ₴)</span>
+                  Пластиковий <span class="make__upsale">(2 ₴)</span>
                 </label>
               </fieldset>
             </div>
@@ -486,8 +501,23 @@
               </button>
 
               <div class="make__total">
-                <p class="make__price text-red">32 ₴</p>
-                <p class="make__size">320мл</p>
+                <input
+                  class="make__input make__input_start-price"
+                  type="hidden"
+                />
+                <input
+                  class="make__input make__input_price"
+                  type="hidden"
+                  name="price"
+                />
+                <p class="make__price text-red">15 ₴</p>
+                <input
+                  class="make__input make__input_size"
+                  type="hidden"
+                  name="size"
+                  value="300"
+                />
+                <p class="make__size">300мл</p>
               </div>
             </div>
           </form>
@@ -495,6 +525,5 @@
       </div>
     </div>
     <!-- ./add -->
-
   </body>
 </html>
