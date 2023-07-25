@@ -453,6 +453,7 @@ img {
   margin-bottom: 40px;
   font-size: 24px;
   text-align: center;
+  color: var(--shadow);
 }
 
 .order__item {
@@ -482,6 +483,7 @@ img {
 .order__name {
   font-weight: 400;
   font-size: 18px;
+  color: #000;
   margin-bottom: 8px;
 }
 
