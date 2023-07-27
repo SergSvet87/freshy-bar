@@ -511,6 +511,7 @@ img {
   justify-self: end;
   align-self: end;
   font-size: 18px;
+  color: #000;
 }
 
 .order__total {
@@ -550,6 +551,19 @@ img {
 .order__btn {
   justify-self: end;
   grid-column: 2/3;
+}
+
+.error .order__input {
+  border-color: red;
+}
+
+.error-text {
+  position: absolute;
+  left: 10px;
+  bottom: -5px;
+  display: block;
+  color: red;
+  margin-top: 5px;
 }
 /* ./order */
 
@@ -751,6 +765,44 @@ img {
 }
 /* ./add */
 
+.modal_success {
+  z-index: 5;
+}
+
+.modal__main_success {
+  max-width: 350px;
+  width: 100%;
+  margin-top: 100px;
+}
+
+.success {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px 40px;
+  border-radius: 24px;
+  background-color: var(--bg);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.success__text {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+.success__text span:last-child{
+  color: var(--green);
+}
+
+.success__btn {
+  background-color: transparent;
+  text-align: right;
+  cursor: pointer;
+}
+.success__btn:hover {
+  fill: #52e36a;
+}
+/* ./success */
 /* ./modal */
 
 /* Media */

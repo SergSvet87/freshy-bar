@@ -5,6 +5,9 @@ import { renderCardList } from "./goodsService.js";
 import { modalController } from "./modalController.js";
 
 const init = async () => {
+  const modalSuccess = document.querySelector(".modal_success");
+  const successBtn = document.querySelector(".success__btn");
+
   const data = await getData();
 
   renderCardList(document.querySelector(".goods__list"), data);
@@ -39,6 +42,15 @@ const init = async () => {
       fillInFormAdd(item);
     },
     close: resetFormAdd,
+  });
+
+  modalController({
+    modal: ".modal_success",
+    btnOpen: ".order__btn",
+  });
+
+  successBtn.addEventListener("click", () => {
+    modalSuccess.closeModal("close");
   });
 };
 

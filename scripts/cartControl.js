@@ -8,6 +8,87 @@ const modalOrderList = modalOrder.querySelector(".order__list");
 const modalOrderTotalPrice = modalOrder.querySelector(".order__total-price");
 const modalOrderCount = modalOrder.querySelector(".order__count");
 const modalOrderBtn = modalOrder.querySelector(".order__btn");
+let modalOrderInputPhone = modalOrder.querySelector(".order__input_phone");
+
+const successName = document.querySelector(".success__name");
+
+const validatePhone = (phone) => {
+  const regex =
+    /^(\+38)?[\s\-]?\(?[0-9]{3}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/;
+  return regex.test(phone);
+};
+
+const validation = (form) => {
+  console.log('form: ', form);
+  const removeError = (input) => {
+    const parent = input.parentNode;
+
+    if (parent.classList.contains("error")) {
+      parent.querySelector(".error-text").remove();
+      parent.classList.remove("error");
+    }
+  };
+
+  const createError = (input, text) => {
+    const parent = input.parentNode;
+    const errorText = document.createElement("p");
+
+    errorText.classList.add("error-text");
+    errorText.textContent = text;
+
+    parent.classList.add("error");
+
+    parent.append(errorText);
+  };
+
+  let result = true;
+
+  const allInputs = form.querySelectorAll("input");
+
+  for (const input of allInputs) {
+    removeError(input);
+
+    if (input.dataset.minLength) {
+      if (input.value.length < input.dataset.minLength) {
+        removeError(input);
+        createError(
+          input,
+          `Мініальна кіл-ть символів: ${input.dataset.minLength}`
+        );
+        result = false;
+      }
+    }
+
+    if (input.dataset.maxLength) {
+      if (input.value.length > input.dataset.maxLength) {
+        removeError(input);
+        createError(
+          input,
+          `Максимальна кіл-ь символів: ${input.dataset.maxLength}`
+        );
+        result = false;
+      }
+    }
+
+    if (input.dataset.required == "true") {
+      if (input.value == "") {
+        removeError(input);
+        createError(input, "Поле не заповнене!");
+        result = false;
+      }
+    }
+
+    if (input.value === modalOrderInputPhone.value) {
+      if (!validatePhone(input.value)) {
+        removeError(input);
+        createError(input, "Номер телефону вказано не вірно!");
+        result = false;
+      }
+    }
+  }
+
+  return result;
+};
 
 export const cartDataControl = {
   get() {
@@ -114,24 +195,32 @@ const renderCartList = (data) => {
 };
 
 const handlerSubmit = async (e) => {
-  const orderListData = cartDataControl.get();
-
   e.preventDefault();
 
+  const orderListData = cartDataControl.get();
+
+  if (validation(modalOrderForm) === true) {
+    modalOrderBtn.disabled = false;
+    const data = getFormData(modalOrderForm);
+
+    const response = await sendData({
+      ...data,
+      products: orderListData,
+    });
+    console.log("response: ", await response.json());
+
+    successName.textContent = data.name;
+  } else {
+    modalOrderBtn.disabled = true;
+  }
+
   if (!orderListData.length) {
+    modalOrderBtn.disabled = true;
     modalOrderForm.reset();
     modalOrder.closeModal("close");
     return;
   }
 
-  const data = getFormData(modalOrderForm);
-  const response = await sendData({
-    ...data,
-    products: orderListData,
-  });
-
-  const { message } = await response.json();
-  alert(message);
   cartDataControl.clear();
   modalOrderForm.reset();
   modalOrder.closeModal("close");
@@ -139,6 +228,11 @@ const handlerSubmit = async (e) => {
 
 export const renderCart = (data) => {
   renderCartList(data);
+
+  if (!data) {
+    modalOrderBtn.disabled = true;
+  }
+
   modalOrderForm.addEventListener("submit", handlerSubmit);
 
   modalOrderList.addEventListener("click", (e) => {
