@@ -7,13 +7,12 @@ export const getData = async () => {
 };
 
 export const sendData = async (data) => {
-  const response = await fetch(`${API_URI}api/order`, {
+  console.log('data: ', data);
+  return await fetch(`${API_URI}api/order`, {
     method: "POST",
     body: JSON.stringify(data),
     headers: {
       "Content-Type": "application/json",
     },
   });
-
-  return response;
 };

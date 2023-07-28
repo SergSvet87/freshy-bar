@@ -233,16 +233,17 @@
             Кошик<sup class="order__count text-red">(2)</sup>
           </h3>
 
-          <ul class="order__list">
-            <!-- <li class="order__item"></li> -->
-          </ul>
+          <ul class="order__list"></ul>
 
           <div class="order__total">
             <p class="order__total-title">Всього:</p>
             <p class="order__total-price text-red">45 ₴</p>
           </div>
 
-          <form class="order__form">            
+          <form
+            class="order__form"
+            name="order"
+          >
             <label class="order__label">
               <input
                 type="text"
@@ -284,18 +285,15 @@
             Збери <span class="text-red">свій </span>смузі
           </h3>
 
-          <form class="make__form make__form_own">
+          <form
+            class="make__form make__form_own"
+            name="make"
+          >
             <input
               class="make__input-title"
               type="hidden"
               name="title"
             />
-            <!-- <input
-              class="make__input-image"
-              type="hidden"
-              name="image"
-              value="images/jpg/make-your-own.jpg"
-            /> -->
 
             <fieldset class="make__fieldset make__fieldset_ingredients">
               <label class="make__label checkbox">
@@ -444,17 +442,14 @@
         <div class="add">
           <h3 class="add__title title-h3">Банановий смузі</h3>
 
-          <form class="add__form add__form_add">
+          <form
+            class="add__form add__form_add"
+            name="add"
+          >
             <input
               class="add__input-title"
               type="hidden"
               name="title"
-            />
-
-            <input
-              class="add__input-image"
-              type="hidden"
-              name="image"
             />
 
             <div class="make__wrap-middle">
@@ -548,6 +543,7 @@
             прийнято та буде готове через 15 хвилин. Чекаємо на Вас! З турботою,
             <span>Freshy</span>.
           </p>
+          
           <button class="success__btn">
             <svg
               width="18"

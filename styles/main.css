@@ -537,6 +537,7 @@ img {
 
 .order__label {
   width: 100%;
+  position: relative;
 }
 
 .order__input {
@@ -560,10 +561,8 @@ img {
 .error-text {
   position: absolute;
   left: 10px;
-  bottom: -5px;
-  display: block;
+  bottom: -20px;
   color: red;
-  margin-top: 5px;
 }
 /* ./order */
 
@@ -790,7 +789,7 @@ img {
   font-size: 24px;
   margin-bottom: 10px;
 }
-.success__text span:last-child{
+.success__text span:last-child {
   color: var(--green);
 }
 

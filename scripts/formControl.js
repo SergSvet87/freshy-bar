@@ -1,5 +1,5 @@
 import { cartDataControl } from "./cartControl.js";
-import { API_URI, price } from "./config.js";
+import { price } from "./config.js";
 import { getFormData } from "./getFormData.js";
 
 export const formSubmit = (form, cb) => {
@@ -96,7 +96,6 @@ export const calculateAdd = () => {
   const modalAddForm = modalAdd.querySelector(".add__form_add");
   const modalAddTitle = modalAdd.querySelector(".add__title");
   const modalAddInputTitle = modalAdd.querySelector(".add__input-title");
-  const modalAddInputImage = modalAdd.querySelector(".add__input-image");
   const modalAddInputStartPrice = modalAdd.querySelector(
     ".make__input_start-price"
   );
@@ -127,7 +126,6 @@ export const calculateAdd = () => {
     modalAddPrice.innerHTML = `${data.price}&nbsp;₴`;
     modalAddInputSize.value = data.size;
     modalAddSize.textContent = data.size;
-    modalAddInputImage.value = `${API_URI}${data.image}`;
     handlerChange();
   };
 

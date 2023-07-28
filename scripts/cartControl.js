@@ -1,94 +1,17 @@
 import { sendData } from "./apiService.js";
 import { API_URI } from "./config.js";
 import { getFormData } from "./getFormData.js";
+import { validation } from "./validation.js";
 
 const modalOrder = document.querySelector(".modal_order");
+// const orderForm = document.forms.order;
 const modalOrderForm = modalOrder.querySelector(".order__form");
 const modalOrderList = modalOrder.querySelector(".order__list");
 const modalOrderTotalPrice = modalOrder.querySelector(".order__total-price");
 const modalOrderCount = modalOrder.querySelector(".order__count");
 const modalOrderBtn = modalOrder.querySelector(".order__btn");
-let modalOrderInputPhone = modalOrder.querySelector(".order__input_phone");
 
 const successName = document.querySelector(".success__name");
-
-const validatePhone = (phone) => {
-  const regex =
-    /^(\+38)?[\s\-]?\(?[0-9]{3}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/;
-  return regex.test(phone);
-};
-
-const validation = (form) => {
-  console.log('form: ', form);
-  const removeError = (input) => {
-    const parent = input.parentNode;
-
-    if (parent.classList.contains("error")) {
-      parent.querySelector(".error-text").remove();
-      parent.classList.remove("error");
-    }
-  };
-
-  const createError = (input, text) => {
-    const parent = input.parentNode;
-    const errorText = document.createElement("p");
-
-    errorText.classList.add("error-text");
-    errorText.textContent = text;
-
-    parent.classList.add("error");
-
-    parent.append(errorText);
-  };
-
-  let result = true;
-
-  const allInputs = form.querySelectorAll("input");
-
-  for (const input of allInputs) {
-    removeError(input);
-
-    if (input.dataset.minLength) {
-      if (input.value.length < input.dataset.minLength) {
-        removeError(input);
-        createError(
-          input,
-          `Мініальна кіл-ть символів: ${input.dataset.minLength}`
-        );
-        result = false;
-      }
-    }
-
-    if (input.dataset.maxLength) {
-      if (input.value.length > input.dataset.maxLength) {
-        removeError(input);
-        createError(
-          input,
-          `Максимальна кіл-ь символів: ${input.dataset.maxLength}`
-        );
-        result = false;
-      }
-    }
-
-    if (input.dataset.required == "true") {
-      if (input.value == "") {
-        removeError(input);
-        createError(input, "Поле не заповнене!");
-        result = false;
-      }
-    }
-
-    if (input.value === modalOrderInputPhone.value) {
-      if (!validatePhone(input.value)) {
-        removeError(input);
-        createError(input, "Номер телефону вказано не вірно!");
-        result = false;
-      }
-    }
-  }
-
-  return result;
-};
 
 export const cartDataControl = {
   get() {
@@ -178,9 +101,7 @@ const renderCartList = (data) => {
 
   if (orderListData.length) {
     modalOrderList.textContent = "";
-    modalOrderBtn.disabled = false;
   } else {
-    modalOrderBtn.disabled = true;
     modalOrderList.textContent = "На жаль, у кошику відсутні смузі! :(";
   }
 
@@ -194,13 +115,23 @@ const renderCartList = (data) => {
   )} ₴`;
 };
 
+if (validation(modalOrderForm) === true) {
+  modalOrderBtn.disabled = true;
+}
+
 const handlerSubmit = async (e) => {
   e.preventDefault();
-
   const orderListData = cartDataControl.get();
+
+  if (!orderListData.length) {
+    modalOrderForm.reset();
+    modalOrder.closeModal("close");
+    return;
+  }
 
   if (validation(modalOrderForm) === true) {
     modalOrderBtn.disabled = false;
+
     const data = getFormData(modalOrderForm);
 
     const response = await sendData({
@@ -210,28 +141,15 @@ const handlerSubmit = async (e) => {
     console.log("response: ", await response.json());
 
     successName.textContent = data.name;
-  } else {
-    modalOrderBtn.disabled = true;
-  }
 
-  if (!orderListData.length) {
-    modalOrderBtn.disabled = true;
+    cartDataControl.clear();
     modalOrderForm.reset();
     modalOrder.closeModal("close");
-    return;
   }
-
-  cartDataControl.clear();
-  modalOrderForm.reset();
-  modalOrder.closeModal("close");
 };
 
 export const renderCart = (data) => {
   renderCartList(data);
-
-  if (!data) {
-    modalOrderBtn.disabled = true;
-  }
 
   modalOrderForm.addEventListener("submit", handlerSubmit);
 
